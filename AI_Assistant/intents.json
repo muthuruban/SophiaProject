@@ -1,0 +1,95 @@
+{
+  "intents": [
+    {
+      "tag": "greetings",
+      "patterns": ["hey","hello","hi","how is it going","good day","what's up"],
+      "responses": ["Hello!","Hey!","What I can do for you?","How can I help you?","Good to see you"]
+    },
+    {
+      "tag": "morning",
+      "patterns": ["Good Morning","Happy Morning"],
+      "responses": ["Good Morning :)","Warm Morning","Good Day!","Happy Morning","Welcome You"]
+    },
+    {
+      "tag": "afternoon",
+      "patterns": ["good afternoon","good evening"],
+      "responses": ["good afternoon","good evening"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye","goodbye","i am leaving","have a good day","see you later"],
+      "responses": ["Sad to see you go :(","Talk to you later","Goodbye!","Have a nice day!","Take care"]
+    },
+    {
+      "tag": "add_todo",
+      "patterns": ["add a new todo","add todo to my list","new todo list","create a todo list"],
+      "responses": [""]
+    },
+    {
+      "tag": "show_todo",
+      "patterns": ["Show my todos","What are my todos","What is in my todo list"],
+      "responses": ["Here are your todo lists","Here's what you are asking for","Here it is"]
+    },
+    {
+      "tag": "add_reminders",
+      "patterns": ["Add a reminder","Remind me","Make a reminder of"],
+      "responses": ["Tell me what I have to remind"]
+    },
+    {
+      "tag": "show_reminders",
+      "patterns": ["Show my reminders","What are my reminders","what you have remembered","what is in my reminder"],
+      "responses": ["Here it is"]
+    },{
+      "tag": "create_note",
+      "patterns": ["Please create new note","Create a note","I want to create a note"],
+      "responses": ["What I have to write onto your note?","What is the contents of the note?"]
+    },
+    {
+      "tag": "name_call",
+      "patterns": ["Hey Sophia","Hi Sophia","Hello Sophia","Sophia","Sophia are you listening","Sophia are you there"],
+      "responses": ["Hi","Hey","What's up","How can I help you?","What I can do for you?","I am listening","I am here","Hello","I am initiated","Goahead","Yes!"]
+    },
+    {
+      "tag": "about",
+      "patterns": ["Who are you?","What are you","Why are you","What's your name","Who is Sophia"],
+      "responses": ["I am Sophia"]
+    },{
+      "tag": "jokes",
+      "patterns": ["Tell me a joke","I am bored","I am feeling bored","Make me laugh","Tell us a joke"],
+      "responses": ["Are you get bored,I will cheer you up!","Ok, I will tell you a joke"]
+    },
+    {
+      "tag": "exit",
+      "patterns": ["I am leaving","See you soon"],
+      "responses": ["Sad to see you go :(","Talk to you later","Goodbye!","Have a nice day!","Take care"]
+    },
+    {
+      "tag": "shut_down",
+      "patterns": ["Shut down","Power Off","Power down"],
+      "responses": ["Need your confirmation, Are you sure to shut down?"]
+    },{
+      "tag": "restart",
+      "patterns": ["Restart","Reboot","warm boot"],
+      "responses": ["Need your confirmation, Are you sure to restart?"]
+    },{
+      "tag": "sleep",
+      "patterns": ["Put to sleep","Take some sleep","Take a nap","Hibernate","Suspend"],
+      "responses": ["Need your confirmation, Are you sure to hibernate?"]
+    },
+    {
+      "tag": "log_out",
+      "patterns": ["Log out","Sign out"],
+      "responses": ["Need your confirmation, Are you sure to log out?"]
+    },
+    {
+      "tag": "lock_screen",
+      "patterns": ["Lock my screen","Lock the system","Lock my system","Lock system","Lock"],
+      "responses": ["Need your confirmation, Are you sure lock screen?"]
+    },
+    {
+      "tag": "queries",
+      "patterns": ["What","when","why","how","do","does","did","is","was","are"],
+      "responses": ["Searching in google","Let me check in google","I will look it on google"]
+    }
+  ]
+}
