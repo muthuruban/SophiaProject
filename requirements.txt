@@ -1,0 +1,11 @@
+nltk
+sklearn
+pyaudio
+pyjokes
+pyttsx3
+speech_recognition
+wikipedia
+pandas
+numpy
+keras
+tensorflow
