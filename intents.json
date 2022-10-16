@@ -16,18 +16,13 @@
       "responses": ["good afternoon","good evening"]
     },
     {
-      "tag": "goodbye",
-      "patterns": ["bye","goodbye","i am leaving","have a good day","see you later"],
-      "responses": ["Sad to see you go :(","Talk to you later","Goodbye!","Have a nice day!","Take care"]
-    },
-    {
       "tag": "add_todo",
-      "patterns": ["add a new todo","add todo to my list","new todo list","create a todo list"],
+      "patterns": ["add a new to do","add to do to my list","new to do list","create a to do list","todo list","to do list"],
       "responses": [""]
     },
     {
       "tag": "show_todo",
-      "patterns": ["Show my todos","What are my todos","What is in my todo list"],
+      "patterns": ["Show my to dos","What are my to dos","What is in my to do list"],
       "responses": ["Here are your todo lists","Here's what you are asking for","Here it is"]
     },
     {
@@ -46,13 +41,13 @@
     },
     {
       "tag": "name_call",
-      "patterns": ["Hey Sophia","Hi Sophia","Hello Sophia","Sophia","Sophia are you listening","Sophia are you there"],
+      "patterns": ["Hey Sophia","Hi Sophia","Hello Sophia","Sophia","Sophia are you listening","Sophia are you there","sofia"],
       "responses": ["Hi","Hey","What's up","How can I help you?","What I can do for you?","I am listening","I am here","Hello","I am initiated","Goahead","Yes!"]
     },
     {
       "tag": "about",
-      "patterns": ["Who are you?","What are you","Why are you","What's your name","Who is Sophia"],
-      "responses": ["I am Sophia"]
+      "patterns": ["Who are you","What are you","Why are you","What's your name","Who is Sophia","about your self","tell me about you","What you can do"],
+      "responses": ["I am Sophia, your personal virtual assistant. I am here to do some simple tasks just with  voice command and I can be as health support."]
     },{
       "tag": "jokes",
       "patterns": ["Tell me a joke","I am bored","I am feeling bored","Make me laugh","Tell us a joke"],
@@ -60,12 +55,12 @@
     },
     {
       "tag": "exit",
-      "patterns": ["I am leaving","See you soon"],
+      "patterns": ["I am leaving","See you soon","Exit","Good bye"],
       "responses": ["Sad to see you go :(","Talk to you later","Goodbye!","Have a nice day!","Take care"]
     },
     {
       "tag": "shut_down",
-      "patterns": ["Shut down","Power Off","Power down"],
+      "patterns": ["Shut down","Power Off","Power down","Shutdown"],
       "responses": ["Need your confirmation, Are you sure to shut down?"]
     },{
       "tag": "restart",
@@ -90,6 +85,14 @@
       "tag": "queries",
       "patterns": ["What","when","why","how","do","does","did","is","was","are"],
       "responses": ["Searching in google","Let me check in google","I will look it on google"]
+    },{
+      "tag": "weather",
+      "patterns": ["How is the climate","how is the climate","how is the weather","how is the sky","today weather report","weather report","weather","temperature","rain","rainy","raining","cloud","cloudy","how is the cloud","humidity"],
+      "responses": [""]
+    },{
+      "tag": "health_assistant",
+      "patterns": ["I need health support","Can you assist me in medical","I need medical support","Health Assistant"],
+      "responses": [""]
     }
   ]
 }

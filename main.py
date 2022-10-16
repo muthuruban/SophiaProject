@@ -1,18 +1,27 @@
 import json
 import os
+import platform
 import sys
+import time
 import webbrowser
 
+import pyaudio
 import pyjokes
 import pyttsx3 as tts
 import speech_recognition
-
+import wikipedia
 from assistant_model import ModelAssistant
+from healthcare_model.main import *
+
+#
+
+#   
+WORKING_PLATFORM = platform.system()
 
 recognizer = speech_recognition.Recognizer()
 
 speaker = tts.init()
-speaker.setProperty("rate", 150)
+# speaker.setProperty("rate", 100)
 
 voices = speaker.getProperty('voices')
 speaker.setProperty('voice', voices[1].id)
@@ -32,7 +41,6 @@ def generic_respond():
 
 # def name_call():
 #     generic_respond()
-
 
 def create_note():
     global recognizer
@@ -67,6 +75,7 @@ def create_note():
             recognizer = speech_recognition.Recognizer()
             print("I didn't get you. Please try again!")
             speaker.say("I didn't get you. Please try again!")
+            speaker.runAndWait()
 
 
 def about():
@@ -122,35 +131,57 @@ def show_reminders():
 
 def add_todo():
     global recognizer
+    todo_lst = []
+    new = str()
     try:
         todo = open("todo.txt", "r+")
-        todo_lst = todo.read().split(',')
-        todo.close()
-        todo = open("todo.txt", "w")
-        print("#", todo_lst)
-        todo_list.append(todo_lst)
-        print(todo_list)
+        raw_str = todo.read()
+        if len(raw_str) != 0:
+            # print("case 1")
+            if "," in raw_str:
+                # print("case 2")
+                todo_templst = raw_str.split(',')
+                for x in todo_templst:
+                    todo_lst.append(str(x))
+                if "" in todo_lst:
+                    todo_lst.remove('')
+            else:
+                # print("else 2.1")
+                todo_templst = raw_str
+                todo_lst.append(todo_templst)
+        else:
+            # print("else")
+            todo = open("todo.txt", "w")
+        # print("#", todo_lst)
     except FileNotFoundError:
         todo = open("todo.txt", "w")
+    todo.close()
     try:
+        todo = open("todo.txt", "w")
         with speech_recognition.Microphone() as mic:
             recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            speaker.say("Tell me what is your todo")
+            print("Tell me what is your todo")
+            speaker.runAndWait()
             audio = recognizer.listen(mic)
             todos = recognizer.recognize_google(audio)
             todos.lower()
-            todo_list.append(todos)
-        print(todo_list)
-    except speech_recognition.UnknownValueError:
-        recognizer = speech_recognition.Recognizer()
-    for i in range(len(todo_list)):
-        temp = str(todo_list[i])
+            new = todos
+            todo_lst.append(todos)
+        # print(todo_lst)
+    except Exception as e:
+        print(e)
+    for i in range(len(todo_lst)):
+        temp = str(todo_lst[i])
         print(temp)
-        todo.write('%s' % temp)
-        todo.write(",")
+        todo.write('%s,' % temp)
     todo.close()
+    speaker.say(f"Your new todo {new} has been added successfully")
+    print(f"Your new todo {new} has been added successfully")
+    speaker.runAndWait()
 
 
-add_todo()
+# add_todo()
 
 
 def shutdown():
@@ -166,7 +197,10 @@ def shutdown():
     except speech_recognition.UnknownValueError:
         recognizer = speech_recognition.Recognizer()
     if confirmation in "yes":
-        return os.system("shutdown /s /t 1")
+        if WORKING_PLATFORM == "Windows":
+            return os.system("shutdown /s /t 1")
+        else:
+            print("another platform!")
     else:
         speaker.say("Confirmation rejected")
         speaker.runAndWait()
@@ -254,14 +288,35 @@ def lock_screen():
 
 
 def queries():
-    return webbrowser.open_new("www.google.com/search?q=" + message)
+    try:
+        result = wikipedia.summary(message, sentences=5)
+        print("According to wikipedia : ", result)
+        speaker.say("According to wikipedia" + result)
+        speaker.runAndWait()
+    except Exception as e:
+        print("Here's the search result")
+        speaker.say("Here's the search result")
+        speaker.runAndWait()
+    webbrowser.open_new("www.google.com/search?q=" + message)
+
+
+def name_call():
+    pass
+
+
+def health_assistant():
+    getSeverityDict()
+    getDescription()
+    getprecautionDict()
+    # getInfo()
+    tree_to_code(clf, cols)
 
 
 mappings = {
     "greetings": greetings,
     "create_note": create_note,
     "jokes": jokes,
-    # "name_call": name_call,
+    "name_call": name_call,
     "about": about,
     "exit": quit,
     "add_reminders": add_reminders,
@@ -272,17 +327,24 @@ mappings = {
     "log_out": logout,
     "lock_screen": lock_screen,
     "queries": queries,
+    "add_todo": add_todo,
+    "health_assistant": health_assistant
 }
 
 assistant = ModelAssistant('intents.json', intent_methods=mappings)
 assistant.load_model()
-speaker.say("I am ready to listen!")
-print("I am ready to listen!")
+speaker.say("Hey!, I am here. How can I help you?")
+print("Hey!, I am here. How can I help you?")
+speaker.runAndWait()
+speaker.runAndWait()
 
 while True:
     try:
         with speech_recognition.Microphone() as mic:
             recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            print("Listening...")
+            speaker.say("Listening...")
+            speaker.runAndWait()
             audio = recognizer.listen(mic)
             message = recognizer.recognize_google(audio)
             message = message.lower()
@@ -290,5 +352,6 @@ while True:
         assistant.request(message)
     except speech_recognition.UnknownValueError:
         recognizer = speech_recognition.Recognizer()
-    except speech_recognition.RequestError:
-        recognizer = speech_recognition.Recognizer()
+        print("Sorry, say it again!")
+        speaker.say("Sorry, say it again!")
+        speaker.runAndWait()
