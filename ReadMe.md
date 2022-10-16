@@ -29,6 +29,6 @@ This project is created only for those who is having interest in building Virtua
 In its current form, it can perform only a few tasks, such as adding reminders, shutting down the system, rebooting the system, and searching Google, etc..
 # Credits
 - https://www.youtube.com/c/NeuralNine
-- https://www.instagram.com/_muthu_ruban/
+- https://github.com/itachi9604/
 # Author
 ### Muthu Ruban T
