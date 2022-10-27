@@ -305,12 +305,12 @@ def tree_to_code(tree, feature_names):
                                 con = True
                         except speech_recognition.UnknownValueError:
                             recognizer = speech_recognition.Recognizer()
-                    if (inp in "yes" or inp in "no"):
+                    if ("yes" in inp or "no" in inp):
                         break
                     else:
                         print("provide proper answers i.e. (yes/no) : ", end="")
                         readn("provide proper answers i.e. (yes/no)")
-                if (inp in "yes"):
+                if ("yes" in inp):
                     symptoms_exp.append(syms)
 
             second_prediction = sec_predict(symptoms_exp)

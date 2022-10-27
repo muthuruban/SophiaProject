@@ -13,15 +13,11 @@ import wikipedia
 from assistant_model import ModelAssistant
 from healthcare_model.main import *
 
-#
-
-#   
 WORKING_PLATFORM = platform.system()
 
 recognizer = speech_recognition.Recognizer()
 
 speaker = tts.init()
-# speaker.setProperty("rate", 100)
 
 voices = speaker.getProperty('voices')
 speaker.setProperty('voice', voices[1].id)
@@ -39,9 +35,6 @@ def generic_respond():
     speaker.runAndWait()
 
 
-# def name_call():
-#     generic_respond()
-
 def create_note():
     global recognizer
     generic_respond()
@@ -51,7 +44,8 @@ def create_note():
     while not done:
         try:
             with speech_recognition.Microphone() as mic:
-                recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+                recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+                recognizer.dynamic_energy_threshold = True
                 audio = recognizer.listen(mic)
                 note = recognizer.recognize_google(audio)
                 note.lower()
@@ -60,7 +54,8 @@ def create_note():
                 speaker.say("Give a file name")
                 speaker.runAndWait()
 
-                recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+                recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+                recognizer.dynamic_energy_threshold = True
                 audio = recognizer.listen(mic)
                 filename = recognizer.recognize_google(audio)
                 filename = filename.lower()
@@ -103,7 +98,8 @@ def add_reminders():
     generic_respond()
     try:
         with speech_recognition.Microphone() as mic:
-            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+            recognizer.dynamic_energy_threshold = True
             audio = recognizer.listen(mic)
             reminder = recognizer.recognize_google(audio)
             reminder = reminder.lower()
@@ -159,7 +155,8 @@ def add_todo():
     try:
         todo = open("todo.txt", "w")
         with speech_recognition.Microphone() as mic:
-            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+            recognizer.dynamic_energy_threshold = True
             speaker.say("Tell me what is your todo")
             print("Tell me what is your todo")
             speaker.runAndWait()
@@ -189,7 +186,8 @@ def shutdown():
     generic_respond()
     try:
         with speech_recognition.Microphone() as mic:
-            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+            recognizer.dynamic_energy_threshold = True
             audio = recognizer.listen(mic)
             confirmation = recognizer.recognize_google(audio)
             confirmation.lower()
@@ -212,7 +210,8 @@ def restart():
     generic_respond()
     try:
         with speech_recognition.Microphone() as mic:
-            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+            recognizer.dynamic_energy_threshold = True
             audio = recognizer.listen(mic)
             confirmation = recognizer.recognize_google(audio)
             confirmation.lower()
@@ -232,7 +231,8 @@ def logout():
     generic_respond()
     try:
         with speech_recognition.Microphone() as mic:
-            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+            recognizer.dynamic_energy_threshold = True
             audio = recognizer.listen(mic)
             confirmation = recognizer.recognize_google(audio)
             confirmation.lower()
@@ -252,7 +252,8 @@ def hibernate():
     generic_respond()
     try:
         with speech_recognition.Microphone() as mic:
-            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+            recognizer.dynamic_energy_threshold = True
             audio = recognizer.listen(mic)
             confirmation = recognizer.recognize_google(audio)
             confirmation.lower()
@@ -272,7 +273,8 @@ def lock_screen():
     generic_respond()
     try:
         with speech_recognition.Microphone() as mic:
-            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+            recognizer.dynamic_energy_threshold = True
             audio = recognizer.listen(mic)
             confirmation = recognizer.recognize_google(audio)
             confirmation.lower()
@@ -341,7 +343,8 @@ speaker.runAndWait()
 while True:
     try:
         with speech_recognition.Microphone() as mic:
-            recognizer.adjust_for_ambient_noise(mic, duration=0.2)
+            recognizer.adjust_for_ambient_noise(mic, duration=0.5)
+            recognizer.dynamic_energy_threshold = True
             print("Listening...")
             speaker.say("Listening...")
             speaker.runAndWait()
