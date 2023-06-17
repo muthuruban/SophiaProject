@@ -184,3 +184,6 @@ class ModelAssistant(Assistant):
             self.intent_methods[ints[0]['intent']]()
         else:
             return self._get_response(ints, self.intents)
+
+
+

@@ -26,7 +26,7 @@ This project is created only for those who is having interest in building Virtua
 - Writing Assistant
 
 # Description
-In its current form, it can perform only a few tasks, such as adding reminders, shutting down the system, rebooting the system, and searching Google, etc..
+In its current form, it can perform only a few tasks, such as adding reminders, shutting down the system, rebooting the system, and searching in Google, etc..
 # Credits
 - https://www.youtube.com/c/NeuralNine
 - https://github.com/itachi9604/

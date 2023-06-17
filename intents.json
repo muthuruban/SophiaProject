@@ -83,7 +83,7 @@
     },
     {
       "tag": "queries",
-      "patterns": ["What","when","why","how","do","does","did","is","was","are"],
+      "patterns": ["What is","who is","search in google","find in web","open google",""],
       "responses": ["Searching in google","Let me check in google","I will look it on google"]
     },{
       "tag": "weather",
