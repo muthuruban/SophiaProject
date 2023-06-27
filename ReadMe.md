@@ -3,6 +3,8 @@
 
 This project is created only for those who is having interest in building Virtual Assistant.
 
+# Commands
+
 # Prerequisites
 
 1. [Python3 - x64-bit](https://www.python.org/)
