@@ -4,6 +4,7 @@
 This project is created only for those who is having interest in building Virtual Assistant.
 
 # Commands
+- https://github.com/muthuruban/SophiaProject/blob/main/readme.txt
 
 # Prerequisites
 
